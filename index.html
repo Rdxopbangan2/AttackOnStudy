@@ -26,13 +26,12 @@
         .active { display: block; animation: ultraInstinct 0.5s ease-out; }
         
         @keyframes ultraInstinct {
-            0% { transform: scale(1.2); filter: brightness(2); opacity: 0; }
+            0% { transform: scale(1.1); filter: brightness(2); opacity: 0; }
             100% { transform: scale(1); filter: brightness(1); opacity: 1; }
         }
 
         .container { max-width: 1200px; margin: auto; text-align: center; }
 
-        /* HOMEPAGE SPECIAL CARDS */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
 
         .card {
@@ -40,27 +39,32 @@
             position: relative; cursor: pointer; transition: 0.5s;
             background-size: cover; background-position: center;
             display: flex; align-items: flex-end; overflow: hidden;
+            background-color: #222; /* Fallback color */
         }
 
-        /* GOKU & BIG THREE BACKGROUNDS */
-        .home-goku { background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('https://w0.peakpx.com/wallpaper/553/1/HD-wallpaper-goku-study-dragon-ball.jpg'); border-color: var(--goku-orange); }
-        .home-big3 { background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('https://w0.peakpx.com/wallpaper/931/465/HD-wallpaper-one-piece-naruto-bleach-big-three.jpg'); border-color: var(--luffy-gold); }
+        /* FIXED STABLE IMAGE LINKS */
+        .home-goku { 
+            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)), 
+            url('https://i.ibb.co/LzfNf7L/goku-study.jpg'); 
+            border-color: var(--goku-orange); 
+        }
+        .home-big3 { 
+            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)), 
+            url('https://i.ibb.co/Vwc9S9V/big-three.jpg'); 
+            border-color: var(--luffy-gold); 
+        }
         
-        /* SUBJECT CARDS */
-        .sci-card { background-image: url('https://images.alphacoders.com/102/1026048.jpg'); border-color: var(--sci); }
-        .math-card { background-image: url('https://images8.alphacoders.com/112/1120042.jpg'); border-color: var(--math); }
-        .sst-card { background-image: url('https://images5.alphacoders.com/606/606233.jpg'); border-color: var(--accent); }
+        .sci-card { background-image: url('https://i.ibb.co/n8P9yYF/senku.jpg'); border-color: var(--sci); }
+        .math-card { background-image: url('https://i.ibb.co/pPz8YmN/lelouch.jpg'); border-color: var(--math); }
+        .sst-card { background-image: url('https://i.ibb.co/Qn9Xp80/eren.jpg'); border-color: var(--accent); }
 
-        .card:hover { transform: translateY(-15px) scale(1.03); border-color: #fff; box-shadow: 0 0 40px rgba(255, 102, 0, 0.5); }
-        .card-label { background: rgba(0,0,0,0.9); width: 100%; padding: 20px; font-size: 1.8rem; color: #fff; border-top: 3px solid rgba(255,255,255,0.1); }
+        .card:hover { transform: translateY(-15px); border-color: #fff; box-shadow: 0 0 30px rgba(255, 102, 0, 0.4); }
+        .card-label { background: rgba(0,0,0,0.85); width: 100%; padding: 20px; font-size: 1.8rem; color: #fff; }
 
         .btn-action { background: var(--goku-orange); color: #fff; border: none; padding: 15px 40px; font-family: 'Bangers'; font-size: 1.5rem; cursor: pointer; border-radius: 8px; margin: 10px; box-shadow: 4px 4px 0px #000; }
-        .btn-action:hover { background: #fff; color: var(--goku-orange); }
-
-        /* CONTENT STYLING */
+        
         .hero-banner { width: 100%; height: 350px; background-size: cover; background-position: center; border-radius: 20px; margin-bottom: 25px; border: 5px solid var(--goku-orange); }
         #timer { font-size: 6rem; color: var(--goku-orange); text-shadow: 0 0 20px rgba(255, 102, 0, 0.8); }
-        .note-box { background: rgba(255,255,255,0.05); padding: 40px; border-radius: 20px; border: 1px solid var(--border); text-align: left; }
     </style>
 </head>
 <body>
@@ -68,64 +72,97 @@
     <div id="home" class="page active">
         <div class="container">
             <h1 style="font-size: 5rem; color: var(--goku-orange); margin-bottom: 0;">ANIME ACADEMY HUB</h1>
-            <p style="font-size: 1.5rem; color: var(--luffy-gold); font-family: 'Bangers';">Goku, Luffy, Naruto, and Ichigo are waiting for you!</p>
-            
+            <p style="font-size: 1.5rem; color: var(--luffy-gold); font-family: 'Bangers';">Study like a Legend. Train like a Saiyan.</p>
             <div class="grid">
                 <div class="card home-goku" onclick="showPage('tools')">
-                    <div class="card-label">🔥 GOKU'S TRAINING GYM (TOOLS)</div>
+                    <div class="card-label">🔥 GOKU'S GEAR (TOOLS)</div>
                 </div>
                 <div class="card home-big3" onclick="showPage('study')">
                     <div class="card-label">⚔️ BIG THREE LIBRARY (STUDY)</div>
                 </div>
             </div>
-            <p style="margin-top: 40px; opacity: 0.6;">"Work hard, study well, and eat a lot!" - Master Roshi</p>
         </div>
     </div>
 
     <div id="tools" class="page">
         <div class="container">
-            <button class="btn-action" onclick="showPage('home')">← BACK TO BASE</button>
-            <div class="hero-banner" style="background-image: url('https://w0.peakpx.com/wallpaper/348/943/HD-wallpaper-goku-training-gym.jpg');"></div>
-            <h1>ULTRA INSTINCT FOCUS</h1>
+            <button class="btn-action" onclick="showPage('home')">← EXIT TRAINING</button>
+            <div class="hero-banner" style="background-image: url('https://i.ibb.co/LzfNf7L/goku-study.jpg');"></div>
+            <h1>HYPERBOLIC TIME CHAMBER</h1>
             <div class="grid">
                 <div style="background:var(--card); padding:30px; border-radius:15px; border:3px solid var(--goku-orange);">
-                    <h2>⏱️ GRAVITY ROOM TIMER</h2>
+                    <h2>⏱️ FOCUS TIMER</h2>
                     <div id="timer">25:00</div>
-                    <button class="btn-action" onclick="startTimer()">POWER UP!</button>
+                    <button class="btn-action" onclick="startTimer()">START TRAINING</button>
                 </div>
                 <div style="background:var(--card); padding:30px; border-radius:15px; border:3px solid var(--luffy-gold);">
-                    <h2>📜 NINJA MISSIONS (TASKS)</h2>
-                    <input type="text" id="taskInput" placeholder="Enter quest..." style="padding:10px; width:60%; background:#222; color:white; border:1px solid #444;">
+                    <h2>📝 QUEST LOG</h2>
+                    <input type="text" id="taskInput" placeholder="Add task..." style="padding:10px; width:60%;">
                     <button class="btn-action" style="background:#fff; color:#000;" onclick="addTask()">ADD</button>
-                    <ul id="taskList" style="list-style:none; padding:0; text-align:left; margin-top:20px;"></ul>
+                    <ul id="taskList" style="list-style:none; padding:0; text-align:left; margin-top:15px;"></ul>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="study" class="page"><div class="container"><button class="btn-action" onclick="showPage('home')">BACK</button><h1>SQUAD RANK</h1><div class="grid"><div class="card sci-card" onclick="openClass('8')"><div class="card-label">CLASS 8</div></div><div class="card math-card" onclick="openClass('9')"><div class="card-label">CLASS 9</div></div><div class="card sst-card" onclick="openClass('10')"><div class="card-label">CLASS 10</div></div></div></div></div>
+    <div id="study" class="page">
+        <div class="container">
+            <button class="btn-action" onclick="showPage('home')">BACK</button>
+            <h1>SELECT YOUR SQUAD</h1>
+            <div class="grid">
+                <div class="card sci-card" onclick="openClass('8')"><div class="card-label">CLASS 8</div></div>
+                <div class="card math-card" onclick="openClass('9')"><div class="card-label">CLASS 9</div></div>
+                <div class="card sst-card" onclick="openClass('10')"><div class="card-label">CLASS 10</div></div>
+            </div>
+        </div>
+    </div>
 
-    <div id="subjects" class="page"><div class="container"><button class="btn-action" onclick="showPage('study')">BACK</button><h1 id="classHeading"></h1><div class="grid"><div class="card sci-card" onclick="openNotes('science')"><div class="card-label" style="color:var(--sci)">🔬 SCIENCE (SENKU)</div></div><div class="card math-card" onclick="openNotes('maths')"><div class="card-label" style="color:var(--math)">📐 MATHS (LELOUCH)</div></div><div class="card sst-card" onclick="openNotes('sst')"><div class="card-label" style="color:var(--accent)">🌍 SST (EREN)</div></div></div></div></div>
+    <div id="subjects" class="page">
+        <div class="container">
+            <button class="btn-action" onclick="showPage('study')">BACK</button>
+            <h1 id="classHeading"></h1>
+            <div class="grid">
+                <div class="card sci-card" onclick="openNotes('science')"><div class="card-label" style="color:var(--sci)">🔬 SCIENCE (SENKU)</div></div>
+                <div class="card math-card" onclick="openNotes('maths')"><div class="card-label" style="color:var(--math)">📐 MATHS (LELOUCH)</div></div>
+                <div class="card sst-card" onclick="openNotes('sst')"><div class="card-label" style="color:var(--accent)">🌍 SST (EREN)</div></div>
+            </div>
+        </div>
+    </div>
 
-    <div id="notesView" class="page"><div class="container" style="max-width: 900px;"><button class="btn-action" onclick="showPage('subjects')">BACK</button><div id="banner" class="hero-banner"></div><h1 id="noteTitle"></h1><div class="note-box" id="noteContent"></div></div></div>
+    <div id="notesView" class="page">
+        <div class="container" style="max-width: 900px;">
+            <button class="btn-action" onclick="showPage('subjects')">BACK</button>
+            <div id="banner" class="hero-banner"></div>
+            <h1 id="noteTitle" style="font-size: 3rem;"></h1>
+            <div id="noteContent" style="background:rgba(255,255,255,0.05); padding:30px; border-radius:15px; text-align:left;"></div>
+        </div>
+    </div>
 
     <script>
         function showPage(id) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(id).classList.add('active');
+            window.scrollTo(0,0);
         }
 
         function openClass(cls) {
-            document.getElementById('classHeading').innerText = "RANK: CLASS " + cls;
+            document.getElementById('classHeading').innerText = "CLASS " + cls + " MISSIONS";
             showPage('subjects');
         }
 
         function openNotes(sub) {
             const banner = document.getElementById('banner');
             const content = document.getElementById('noteContent');
-            if(sub === 'science') { banner.style.backgroundImage = "url('https://images.alphacoders.com/102/1026048.jpg')"; content.innerHTML = "<h3>Kingdom of Science</h3><p>Senku is 10 billion percent ready to help you pass!</p>"; }
-            else if(sub === 'maths') { banner.style.backgroundImage = "url('https://images8.alphacoders.com/112/1120042.jpg')"; content.innerHTML = "<h3>Strategic Maths</h3><p>Lelouch has calculated your victory path.</p>"; }
-            else { banner.style.backgroundImage = "url('https://images5.alphacoders.com/606/606233.jpg')"; content.innerHTML = "<h3>History Records</h3><p>Eren says keep moving forward until the syllabus is done.</p>"; }
+            if(sub === 'science') { 
+                banner.style.backgroundImage = "url('https://i.ibb.co/n8P9yYF/senku.jpg')"; 
+                content.innerHTML = "<h3>Kingdom of Science</h3><p>Time to rebuild civilization! Class 8-10 Science starts here.</p>"; 
+            } else if(sub === 'maths') { 
+                banner.style.backgroundImage = "url('https://i.ibb.co/pPz8YmN/lelouch.jpg')"; 
+                content.innerHTML = "<h3>Zero's Equations</h3><p>Mathematics is the ultimate strategy for victory.</p>"; 
+            } else { 
+                banner.style.backgroundImage = "url('https://i.ibb.co/Qn9Xp80/eren.jpg')"; 
+                content.innerHTML = "<h3>History & Walls</h3><p>We keep moving forward until the syllabus is finished.</p>"; 
+            }
             document.getElementById('noteTitle').innerText = sub.toUpperCase();
             showPage('notesView');
         }
@@ -143,3 +180,4 @@
     </script>
 </body>
 </html>
+
