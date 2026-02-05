@@ -1,235 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OtakuAcademy</title>
-<style>
-:root {
-    --bg-color:#fff; --text-color:#000; --card-bg:#f9f0ff; --primary-color:#ff6fcf; --accent-color:#7f00ff;
-}
-[data-theme="dark"]{
-    --bg-color:#1b1b2f; --text-color:#f0f0f0; --card-bg:#2a2a3d; --primary-color:#ff79c6; --accent-color:#bb86fc;
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Segoe UI', sans-serif;background-color:var(--bg-color);color:var(--text-color);transition:0.3s;}
-header{display:flex;justify-content:space-between;align-items:center;padding:15px 20px;background:linear-gradient(90deg,var(--primary-color),var(--accent-color));color:#fff;border-radius:0 0 20px 20px;box-shadow:0 4px 8px rgba(0,0,0,0.2);}
-header h1{display:flex;align-items:center;gap:10px;font-size:2em;animation:fadeIn 1s;}
-header img{width:60px;height:60px;border-radius:50%;border:2px solid #fff;box-shadow:0 4px 8px rgba(0,0,0,0.3);}
-header input{padding:8px;font-size:1em;width:250px;border-radius:10px;border:1px solid var(--accent-color);}
-header button{margin-left:10px;padding:8px 12px;cursor:pointer;border:none;border-radius:8px;background:var(--accent-color);color:white;transition:0.3s;}
-header button:hover{background:var(--primary-color);}
-main{padding:20px;}
-section{margin-bottom:50px;}
-.card-container{display:flex;flex-wrap:wrap;gap:20px;}
-.card{background:var(--card-bg);padding:20px;border-radius:20px;width:300px;position:relative;box-shadow:0 4px 12px rgba(0,0,0,0.2);transition:0.3s;animation:popUp 0.5s;}
-.card:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,0.3);}
-.card h3{margin-bottom:10px;color:var(--accent-color);}
-.card a,.card button{display:inline-block;margin-top:10px;padding:8px 14px;text-decoration:none;background:var(--accent-color);color:white;border-radius:12px;border:none;cursor:pointer;transition:0.3s;}
-.card a:hover,.card button:hover{background:var(--primary-color);}
-footer{text-align:center;padding:25px;background:linear-gradient(90deg,var(--primary-color),var(--accent-color));color:#fff;font-size:0.9em;border-radius:20px 20px 0 0;box-shadow:0 -4px 8px rgba(0,0,0,0.2);}
-
-/* Premium lock */
-.locked{filter:blur(3px);position:relative;pointer-events:none;}
-.locked::after{content:"🔒 Premium";position:absolute;top:10px;right:10px;font-size:1.2em;color:red;}
-
-/* QR Modal */
-#qrModal{
-    display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:1000;
-}
-#qrContent{
-    background:var(--card-bg); padding:25px; border-radius:25px; text-align:center; position:relative; box-shadow:0 6px 20px rgba(0,0,0,0.4); animation:popUp 0.5s;
-}
-#qrContent img{width:220px; height:220px; border-radius:15px; border:3px solid var(--accent-color);}
-#qrContent button{margin-top:15px; padding:8px 14px;}
-#unlockInput{padding:8px; width:180px; margin-top:12px; border-radius:10px; border:1px solid var(--accent-color);}
-
-/* Animations */
-@keyframes popUp{0%{opacity:0;transform:scale(0.8);}100%{opacity:1;transform:scale(1);}}
-</style>
+    <meta charset="UTF-8">
+    <title>Class 8 Science Notes</title>
+    <style>
+        /* General Look */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; color: #333; padding: 40px; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        
+        /* Headers */
+        h1 { text-align: center; color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #e67e22; margin-top: 30px; border-left: 5px solid #e67e22; padding-left: 10px; }
+        
+        /* Content Styling */
+        .important-box { background: #fff3cd; border: 1px solid #ffeeba; padding: 15px; border-radius: 5px; margin: 15px 0; }
+        ul { line-height: 1.8; }
+        
+        /* PDF Print Styling - This makes the PDF look good! */
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; width: 100%; max-width: 100%; border: none; }
+            button { display: none; } /* Hide buttons on the PDF */
+        }
+    </style>
 </head>
 <body>
 
-<header>
-<h1>
-<img src="https://i.pinimg.com/564x/89/ff/f2/89fff24c7c2eaf3de2878c04c268a030.jpg" alt="Anime Character">
-OtakuAcademy
-</h1>
-<div class="controls">
-<input type="text" id="searchBar" placeholder="Search notes, quizzes, videos, tools...">
-<button onclick="toggleTheme()">🌙</button>
-</div>
-</header>
+    <div class="container">
+        <button onclick="window.print()" style="padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; float: right;">Save as PDF / Print</button>
+        
+        <h1>Class 8 Science: Full Notes</h1>
 
-<main>
-<section id="ad">
-<div style="background:#ddd;text-align:center;padding:15px;border-radius:10px;margin-bottom:20px;">
-<p>Ad Space - Place Your Ad Here</p>
-</div>
-</section>
+        <section>
+            <h2>Chapter 9: Friction</h2>
+            <p>Friction is a force that opposes the motion of an object over another surface.</p>
+            <ul>
+                <li><strong>Static Friction:</strong> Acts when an object is at rest.</li>
+                <li><strong>Sliding Friction:</strong> Acts when an object slides over another.</li>
+                <li><strong>Rolling Friction:</strong> Acts when an object rolls. (Rolling is easier than sliding!)</li>
+            </ul>
+            <div class="important-box">
+                <strong>Tip:</strong> Friction can be increased by making surfaces rough (tires) or decreased by using lubricants (oil/grease).
+            </div>
+        </section>
 
-<section id="notes">
-<h2>Notes & Resources</h2>
-<div class="card-container" id="notesContainer"></div>
-</section>
+        <section>
+            <h2>Chapter 10: Light</h2>
+            <p>Light allows us to see the world. It follows the Law of Reflection.</p>
+            
+            <ul>
+                <li><strong>Angle of Incidence ($\angle i$)</strong> is always equal to the <strong>Angle of Reflection ($\angle r$)</strong>.</li>
+                <li><strong>Human Eye:</strong> The lens focuses light on the <strong>Retina</strong>, which sends signals to the brain via the <strong>Optic Nerve</strong>.</li>
+            </ul>
+            [attachment_0](attachment)
+        </section>
 
-<section id="quizzes">
-<h2>Quizzes</h2>
-<div class="card-container" id="quizContainer"></div>
-</section>
+    </div>
 
-<section id="videos">
-<h2>Interactive Videos</h2>
-<div class="card-container" id="videosContainer"></div>
-</section>
-
-<section id="tools">
-<h2>Student Tools</h2>
-<div class="card-container" id="toolsContainer"></div>
-</section>
-
-<section id="inspiration">
-<h2>My Inspiration & Motivation</h2>
-<div class="card-container">
-  <div class="card">
-    <h3>Vyyksuckatanine</h3>
-    <p>He inspires me to work harder, learn more, and push my limits every day.</p>
-    <a href="https://www.youtube.com/@Vyyksuckatanine" target="_blank">Visit YouTube Channel</a>
-  </div>
-</div>
-</section>
-
-<footer>
-<p>Made in India by RDX (Rudraksh Kaushal) | OtakuAcademy &copy; 2026</p>
-</footer>
-
-<!-- QR Modal -->
-<div id="qrModal">
-<div id="qrContent">
-<h3>Scan QR to Pay via Fampay</h3>
-<img src="https://via.placeholder.com/220x220.png?text=Your+QR+Here" alt="Fampay QR">
-<p>After payment, enter your Payment ID/Txn ID below:</p>
-<input type="text" id="unlockInput" placeholder="Enter Payment ID">
-<br>
-<button onclick="simulateUnlock()">Unlock Premium</button>
-<br>
-<button onclick="closeQR()">Cancel</button>
-</div>
-</div>
-
-<script>
-// Dark/light mode
-function toggleTheme(){document.documentElement.toggleAttribute("data-theme");}
-
-// Search
-const searchBar = document.getElementById('searchBar');
-searchBar.addEventListener('keyup', ()=>{
-    let filter = searchBar.value.toLowerCase();
-    document.querySelectorAll('.card').forEach(card=>{
-        card.style.display = card.textContent.toLowerCase().includes(filter)?"block":"none";
-    });
-});
-
-// Premium unlock
-let premiumUnlocked = localStorage.getItem("premiumUnlocked") === "true";
-
-// Data
-const notes = [
-{title:"Physics - Laws of Motion", desc:"Class 11 Physics PDF", pdf:"https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", premium:true},
-{title:"Math - Calculus Basics", desc:"College worksheets", pdf:"https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", premium:true}
-];
-const quizzes = [
-{title:"Math Quiz", questions:[{q:"2 + 2 = ?", options:["3","4","5"], answer:"4"}], premium:true},
-{title:"Physics Quiz", questions:[{q:"Force = mass * ?", options:["Velocity","Acceleration","Time"], answer:"Acceleration"}], premium:true}
-];
-const videos = [
-{title:"Physics Tutorial", link:"https://www.youtube.com/embed/dQw4w9WgXcQ"}
-];
-const tools = [
-{title:"Calculator", desc:"Basic math calculations", link:"https://www.desmos.com/scientific", affiliate:true}
-];
-
-// Render content
-function renderContent(){
-    const notesContainer = document.getElementById('notesContainer');
-    notesContainer.innerHTML="";
-    notes.forEach(n=>{
-        let card = document.createElement('div'); card.className="card";
-        if(n.premium && !premiumUnlocked) card.classList.add("locked");
-        card.innerHTML = `<h3>${n.title}</h3><p>${n.desc}</p>
-        <a href="${n.pdf}" ${n.premium && !premiumUnlocked?'onclick="openQR(event)"':'download'}>${n.premium?'Premium - Unlock':'Download PDF'}</a>`;
-        notesContainer.appendChild(card);
-    });
-
-    const quizContainer = document.getElementById('quizContainer');
-    quizContainer.innerHTML="";
-    quizzes.forEach((q,idx)=>{
-        let card=document.createElement('div'); card.className="card";
-        if(q.premium && !premiumUnlocked) card.classList.add("locked");
-        card.innerHTML=`<h3>${q.title}</h3>
-        <button onclick="${q.premium && !premiumUnlocked?'openQR(event)':'startQuiz('+idx+')'}">${q.premium?'Unlock Premium':'Start Quiz'}</button>`;
-        quizContainer.appendChild(card);
-    });
-
-    const videosContainer = document.getElementById('videosContainer');
-    videosContainer.innerHTML="";
-    videos.forEach(v=>{
-        let card=document.createElement('div'); card.className="card";
-        card.innerHTML=`<h3>${v.title}</h3><iframe width="100%" height="200" src="${v.link}" frameborder="0" allowfullscreen></iframe>`;
-        videosContainer.appendChild(card);
-    });
-
-    const toolsContainer = document.getElementById('toolsContainer');
-    toolsContainer.innerHTML="";
-    tools.forEach(t=>{
-        let card=document.createElement('div'); card.className="card";
-        card.innerHTML=`<h3>${t.title}</h3><p>${t.desc}</p><a href="${t.link}" target="_blank">${t.affiliate?'Affiliate Link':'Open Tool'}</a>`;
-        toolsContainer.appendChild(card);
-    });
-}
-renderContent();
-
-// QR Modal functions
-const qrModal = document.getElementById("qrModal");
-function openQR(e){e.preventDefault(); qrModal.style.display="flex";}
-function closeQR(){qrModal.style.display="none";}
-
-// Simulate unlock (auto-unlock after entering Txn ID)
-function simulateUnlock(){
-    const paymentId = document.getElementById("unlockInput").value;
-    if(paymentId.trim() !== ""){
-        alert("Payment verified! Premium content unlocked 🎉");
-        premiumUnlocked = true;
-        localStorage.setItem("premiumUnlocked","true");
-        renderContent();
-        closeQR();
-    } else {
-        alert("Enter valid Payment ID after payment.");
-    }
-}
-
-// Quiz function
-function startQuiz(idx){
-    const quiz=quizzes[idx];
-    const quizContainer=document.getElementById('quizContainer');
-    quizContainer.innerHTML=`<h2>${quiz.title}</h2>`;
-    let score=0;
-    quiz.questions.forEach((q,i)=>{
-        let qDiv=document.createElement('div'); qDiv.className="quiz-card";
-        qDiv.innerHTML=`<p>${i+1}. ${q.q}</p>`;
-        q.options.forEach(opt=>{
-            let btn=document.createElement('button'); btn.textContent=opt;
-            btn.onclick=()=>{
-                if(opt===q.answer){btn.style.backgroundColor="green"; score++;} else btn.style.backgroundColor="red";
-            };
-            qDiv.appendChild(btn);
-        });
-        quizContainer.appendChild(qDiv);
-    });
-    let submitBtn=document.createElement('button'); submitBtn.textContent="Submit Quiz";
-    submitBtn.onclick=()=>{alert(`Score: ${score}/${quiz.questions.length}`);};
-    quizContainer.appendChild(submitBtn);
-}
-</script>
 </body>
 </html>
