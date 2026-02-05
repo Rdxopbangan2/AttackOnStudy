@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime Academy Hub | Training Master</title>
+    <title>Anime Academy Hub | Pirate King Edition</title>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --bg: #050505; --card: #111; --text: #f1f5f9;
             --accent: #ff0055; --sci: #00ffcc; --math: #7000ff;
-            --goku-orange: #ff6600; --luffy-gold: #ffcc00; --border: #334155;
+            --luffy-gold: #ffcc00; --luffy-red: #ff1100; --border: #334155;
         }
 
         body {
@@ -23,161 +23,109 @@
         h1, h2, h3, .card-label { font-family: 'Bangers', cursive; text-transform: uppercase; letter-spacing: 2px; text-shadow: 3px 3px 0px #000; }
 
         .page { display: none; padding: 40px 20px; min-height: 100vh; }
-        .active { display: block; animation: ultraInstinct 0.5s ease-out; }
+        .active { display: block; animation: gearShift 0.5s ease-out; }
         
-        @keyframes ultraInstinct {
-            0% { transform: scale(1.1); filter: brightness(2); opacity: 0; }
-            100% { transform: scale(1); filter: brightness(1); opacity: 1; }
+        @keyframes gearShift {
+            0% { transform: scale(0.9); opacity: 0; filter: blur(10px); }
+            100% { transform: scale(1); opacity: 1; filter: blur(0); }
         }
 
         .container { max-width: 1200px; margin: auto; text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-top: 30px; }
 
+        /* CARDS */
         .card {
-            height: 350px; border-radius: 20px; border: 5px solid var(--border);
-            position: relative; cursor: pointer; transition: 0.5s;
+            height: 380px; border-radius: 20px; border: 5px solid var(--border);
+            position: relative; cursor: pointer; transition: 0.4s;
             background-size: cover; background-position: center;
             display: flex; align-items: flex-end; overflow: hidden;
-            background-color: #222;
         }
-
-        /* IMAGES */
-        .home-goku { background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1618336753974-aae8e04506aa?q=80&w=1000&auto=format&fit=crop'); border-color: var(--goku-orange); }
-        .home-big3 { background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('https://wallpapers.com/images/featured/the-big-three-anime-758j0o7i0h5p9h3s.jpg'); border-color: var(--luffy-gold); }
-        .sci-card { background-image: url('https://w0.peakpx.com/wallpaper/594/434/HD-wallpaper-dr-stone-senku-ishigami.jpg'); border-color: var(--sci); }
-        .math-card { background-image: url('https://w0.peakpx.com/wallpaper/205/1018/HD-wallpaper-code-geass-lelouch-lamperouge.jpg'); border-color: var(--math); }
-        .sst-card { background-image: url('https://w0.peakpx.com/wallpaper/411/335/HD-wallpaper-attack-on-titan-eren-yeager.jpg'); border-color: var(--accent); }
-
-        /* BUTTONS & INPUTS */
-        .btn-action { background: var(--goku-orange); color: #fff; border: none; padding: 12px 25px; font-family: 'Bangers'; font-size: 1.2rem; cursor: pointer; border-radius: 8px; margin: 5px; box-shadow: 3px 3px 0px #000; transition: 0.2s; }
-        .btn-action:hover { transform: scale(1.05); filter: brightness(1.2); }
-        .btn-small { padding: 5px 15px; font-size: 1rem; }
         
-        input[type="number"] { background: #222; border: 2px solid var(--border); color: white; padding: 8px; border-radius: 5px; width: 60px; font-family: 'Orbitron'; text-align: center; }
-
-        /* TIMER BOX */
-        .timer-display { font-size: 5rem; color: var(--goku-orange); text-shadow: 0 0 20px rgba(255, 102, 0, 0.8); margin: 10px 0; }
-        .timer-label { font-size: 1.5rem; color: var(--luffy-gold); margin-top: 10px; }
-        .hero-banner { width: 100%; height: 350px; background-size: cover; background-position: center; border-radius: 20px; margin-bottom: 25px; border: 5px solid var(--goku-orange); }
+        .home-luffy { background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('luffy_gear.jpg'); border-color: var(--luffy-red); }
+        .home-big3 { background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('bigthree.jpg'); border-color: var(--luffy-gold); }
         
-        .control-group { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid var(--goku-orange); text-align: left; }
+        /* CLASS CARDS (Using your class images) */
+        .c8-card { background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.9)), url('class8.jpg'); border-color: #00ffaa; }
+        .c9-card { background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.9)), url('class9.jpg'); border-color: #ff9900; }
+        .c10-card { background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.9)), url('class10.jpg'); border-color: #0099ff; }
+        .c11-card { background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.9)), url('class11.jpg'); border-color: #ff3300; }
+        .c12-card { background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.9)), url('class12.jpg'); border-color: #ffff00; }
+
+        .card-label { background: rgba(0,0,0,0.85); width: 100%; padding: 15px; font-size: 1.6rem; color: #fff; }
+        .quote-text { font-family: 'Orbitron'; font-size: 0.75rem; color: #ccc; padding: 0 15px 10px 15px; font-style: italic; background: rgba(0,0,0,0.85); width: 100%; box-sizing: border-box; }
+
+        /* LUFFY TIMER UI */
+        .timer-display { font-size: 7rem; color: var(--luffy-red); text-shadow: 0 0 25px var(--luffy-red); margin: 10px 0; font-family: 'Bangers'; }
+        .btn-gear { background: var(--luffy-red); color: #fff; border: none; padding: 15px 35px; font-family: 'Bangers'; font-size: 1.5rem; cursor: pointer; border-radius: 50px; box-shadow: 0 5px 15px rgba(255,17,0,0.4); transition: 0.3s; }
+        .btn-gear:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(255,17,0,0.6); }
+        .control-panel { background: rgba(0,0,0,0.6); padding: 30px; border-radius: 30px; border: 2px solid var(--luffy-gold); display: inline-block; }
     </style>
 </head>
 <body>
 
     <div id="home" class="page active">
         <div class="container">
-            <h1 style="font-size: 5rem; color: var(--goku-orange);">ANIME ACADEMY HUB</h1>
+            <h1 style="font-size: 5rem; color: var(--luffy-red);">ANIME ACADEMY HUB</h1>
             <div class="grid">
-                <div class="card home-goku" onclick="showPage('tools')"><div class="card-label">🔥 GOKU'S TRAINING GEAR</div></div>
-                <div class="card home-big3" onclick="showPage('study')"><div class="card-label">⚔️ BIG THREE LIBRARY</div></div>
+                <div class="card home-luffy" onclick="showPage('tools')">
+                    <div class="card-label">🍖 LUFFY'S GEAR (TOOLS)</div>
+                </div>
+                <div class="card home-big3" onclick="showPage('study')">
+                    <div class="card-label">⚔️ BIG THREE LIBRARY (STUDY)</div>
+                </div>
             </div>
         </div>
     </div>
 
     <div id="tools" class="page">
         <div class="container">
-            <button class="btn-action" onclick="showPage('home')">← EXIT GYM</button>
-            <h1>HYPERBOLIC TIME CHAMBER</h1>
+            <button class="btn-gear" style="font-size: 1rem; padding: 10px 20px;" onclick="showPage('home')">← EXIT GEAR</button>
+            <h1 id="timerStatus" style="color: var(--luffy-gold); font-size: 4rem;">GEAR 2ND: FOCUS</h1>
+            <div class="timer-display" id="display">20:00</div>
+            
+            <div class="control-panel">
+                <p style="font-family: 'Bangers'; font-size: 1.2rem;">FOCUS STAMINA: <input type="number" id="focusInput" value="20" min="20" style="padding:5px; border-radius:5px; border:none;"> 
+                   MEAT BREAK: <input type="number" id="breakInput" value="5" min="1" style="padding:5px; border-radius:5px; border:none;"></p>
+                <button class="btn-gear" id="startBtn" onclick="toggleTimer()">ACTIVATE GEAR</button>
+                <button class="btn-gear" style="background:#444; box-shadow:none;" onclick="resetTimer()">RESET</button>
+            </div>
+            <p style="margin-top:20px; font-family:'Bangers'; color:var(--luffy-gold)">"I'm gonna be the King of Scholars!"</p>
+        </div>
+    </div>
+
+    <div id="study" class="page">
+        <div class="container">
+            <button class="btn-gear" style="font-size: 1rem;" onclick="showPage('home')">← BACK</button>
+            <h1>SELECT YOUR RANK</h1>
             <div class="grid">
-                <div style="background:var(--card); padding:25px; border-radius:15px; border:3px solid var(--goku-orange);">
-                    <h2 id="timerStatus">FOCUS MODE</h2>
-                    <div class="timer-display" id="display">20:00</div>
-                    
-                    <div class="control-group">
-                        <label>FOCUS TIME (Min): </label>
-                        <button class="btn-action btn-small" onclick="adjustTime('focus', -5)">-5</button>
-                        <input type="number" id="focusInput" value="20" min="20" max="600" onchange="validateInputs()">
-                        <button class="btn-action btn-small" onclick="adjustTime('focus', 5)">+5</button>
-                    </div>
-
-                    <div class="control-group" id="breakGroup">
-                        <label>BREAK TIME (Min): </label>
-                        <button class="btn-action btn-small" onclick="adjustTime('break', -1)">-1</button>
-                        <input type="number" id="breakInput" value="5" min="1" max="60">
-                        <button class="btn-action btn-small" onclick="adjustTime('break', 1)">+1</button>
-                        <button class="btn-action btn-small" style="background:#444;" onclick="toggleBreak()">REMOVE BREAK</button>
-                    </div>
-                    <button id="addBreakBtn" class="btn-action" style="display:none; background:#444;" onclick="toggleBreak()">+ ADD BREAK</button>
-
-                    <div style="margin-top: 20px;">
-                        <button class="btn-action" id="startBtn" onclick="toggleTimer()" style="width: 80%;">START TRAINING</button>
-                        <button class="btn-action" style="background:#444;" onclick="resetTimer()">RESET</button>
-                    </div>
-                </div>
-
-                <div style="background:var(--card); padding:25px; border-radius:15px; border:3px solid var(--luffy-gold);">
-                    <h2>📜 NINJA QUESTS</h2>
-                    <input type="text" id="taskInput" placeholder="New Mission..." style="padding:10px; width:60%; background:#222; color:white; border:none;">
-                    <button class="btn-action" style="background:#fff; color:#000;" onclick="addTask()">ADD</button>
-                    <ul id="taskList" style="list-style:none; padding:0; text-align:left; margin-top:20px;"></ul>
-                </div>
+                <div class="card c8-card" onclick="openClass('8')"><div style="width:100%"><div class="quote-text">"Set your heart ablaze!"</div><div class="card-label">CLASS 8: MIZUNOTO</div></div></div>
+                <div class="card c9-card" onclick="openClass('9')"><div style="width:100%"><div class="quote-text">"Believe it!"</div><div class="card-label">CLASS 9: GENIN</div></div></div>
+                <div class="card c10-card" onclick="openClass('10')"><div style="width:100%"><div class="quote-text">"Ban-Kai!"</div><div class="card-label">CLASS 10: SHINIGAMI</div></div></div>
+                <div class="card c11-card" onclick="openClass('11')"><div style="width:100%"><div class="quote-text">"Easy revenge!"</div><div class="card-label">CLASS 11: DEVIL HUNTER</div></div></div>
+                <div class="card c12-card" onclick="openClass('12')"><div style="width:100%"><div class="quote-text">"Ultra Instinct!"</div><div class="card-label">CLASS 12: Z-WARRIOR</div></div></div>
             </div>
         </div>
     </div>
 
-    <div id="study" class="page"><div class="container"><button class="btn-action" onclick="showPage('home')">BACK</button><h1>SQUAD RANK</h1><div class="grid"><div class="card sci-card" onclick="openClass('8')"><div class="card-label">CLASS 8</div></div><div class="card math-card" onclick="openClass('9')"><div class="card-label" style="color:var(--math)">CLASS 9</div></div><div class="card sst-card" onclick="openClass('10')"><div class="card-label" style="color:var(--accent)">CLASS 10</div></div></div></div></div>
-    <div id="subjects" class="page"><div class="container"><button class="btn-action" onclick="showPage('study')">BACK</button><h1 id="classHeading"></h1><div class="grid"><div class="card sci-card" onclick="openNotes('science')"><div class="card-label">🔬 SCIENCE (SENKU)</div></div><div class="card math-card" onclick="openNotes('maths')"><div class="card-label">📐 MATHS (LELOUCH)</div></div><div class="card sst-card" onclick="openNotes('sst')"><div class="card-label">🌍 SST (EREN)</div></div></div></div></div>
-    <div id="notesView" class="page"><div class="container" style="max-width:900px;"><button class="btn-action" onclick="showPage('subjects')">BACK</button><div id="banner" class="hero-banner"></div><h1 id="noteTitle"></h1><div id="noteContent" style="background:rgba(255,255,255,0.05); padding:30px; border-radius:15px; text-align:left;"></div></div></div>
-
     <script>
-        // NAVIGATION
         function showPage(id) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(id).classList.add('active');
-            window.scrollTo(0,0);
         }
 
-        // TIMER LOGIC
-        let timerObj = null;
-        let isRunning = false;
-        let isFocusMode = true;
-        let hasBreak = true;
-        let secondsLeft = 1200; // 20 min default
+        let timerObj = null, isRunning = false, isFocusMode = true, secondsLeft = 1200;
 
         function updateDisplay() {
-            const h = Math.floor(secondsLeft / 3600);
-            const m = Math.floor((secondsLeft % 3600) / 60);
-            const s = secondsLeft % 60;
-            document.getElementById('display').innerText = 
-                `${h > 0 ? h + ':' : ''}${m < 10 && h > 0 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
-        }
-
-        function validateInputs() {
-            let focusVal = parseInt(document.getElementById('focusInput').value);
-            if (focusVal < 20) focusVal = 20;
-            if (focusVal > 600) focusVal = 600;
-            document.getElementById('focusInput').value = focusVal;
-            if (!isRunning) {
-                secondsLeft = focusVal * 60;
-                updateDisplay();
-            }
-        }
-
-        function adjustTime(type, amount) {
-            const input = document.getElementById(type + 'Input');
-            input.value = parseInt(input.value) + amount;
-            validateInputs();
-        }
-
-        function toggleBreak() {
-            hasBreak = !hasBreak;
-            document.getElementById('breakGroup').style.display = hasBreak ? 'block' : 'none';
-            document.getElementById('addBreakBtn').style.display = hasBreak ? 'none' : 'inline-block';
+            const m = Math.floor(secondsLeft / 60), s = secondsLeft % 60;
+            document.getElementById('display').innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
         }
 
         function toggleTimer() {
-            if (isRunning) {
-                clearInterval(timerObj);
-                document.getElementById('startBtn').innerText = "RESUME TRAINING";
-            } else {
+            if (isRunning) { clearInterval(timerObj); document.getElementById('startBtn').innerText = "RESUME"; } 
+            else {
                 timerObj = setInterval(() => {
-                    if (secondsLeft > 0) {
-                        secondsLeft--;
-                        updateDisplay();
-                    } else {
-                        switchMode();
-                    }
+                    if (secondsLeft > 0) { secondsLeft--; updateDisplay(); } 
+                    else { switchMode(); }
                 }, 1000);
                 document.getElementById('startBtn').innerText = "PAUSE";
             }
@@ -185,55 +133,21 @@
         }
 
         function switchMode() {
-            clearInterval(timerObj);
-            isRunning = false;
-            if (isFocusMode && hasBreak) {
-                isFocusMode = false;
-                secondsLeft = parseInt(document.getElementById('breakInput').value) * 60;
-                document.getElementById('timerStatus').innerText = "BREAK MODE 🍖";
-                document.getElementById('display').style.color = "var(--sci)";
-                alert("Focus Complete! Time for a Senzu Bean (Break).");
-            } else {
-                isFocusMode = true;
-                secondsLeft = parseInt(document.getElementById('focusInput').value) * 60;
-                document.getElementById('timerStatus').innerText = "FOCUS MODE 🔥";
-                document.getElementById('display').style.color = "var(--goku-orange)";
-                alert("Break Over! Back to training!");
-            }
+            clearInterval(timerObj); isRunning = false; isFocusMode = !isFocusMode;
+            secondsLeft = isFocusMode ? document.getElementById('focusInput').value * 60 : document.getElementById('breakInput').value * 60;
+            document.getElementById('timerStatus').innerText = isFocusMode ? "GEAR 2ND: FOCUS" : "MEAT TIME: BREAK 🍖";
+            document.getElementById('display').style.color = isFocusMode ? "var(--luffy-red)" : "var(--sci)";
             updateDisplay();
-            document.getElementById('startBtn').innerText = "START TRAINING";
+            document.getElementById('startBtn').innerText = "START";
         }
 
         function resetTimer() {
-            clearInterval(timerObj);
-            isRunning = false;
-            isFocusMode = true;
-            secondsLeft = parseInt(document.getElementById('focusInput').value) * 60;
-            document.getElementById('timerStatus').innerText = "FOCUS MODE";
-            document.getElementById('display').style.color = "var(--goku-orange)";
-            document.getElementById('startBtn').innerText = "START TRAINING";
+            clearInterval(timerObj); isRunning = false; isFocusMode = true;
+            secondsLeft = document.getElementById('focusInput').value * 60;
             updateDisplay();
         }
 
-        // QUEST LOG & CLASS LOGIC (Same as before)
-        function addTask() {
-            let v = document.getElementById('taskInput').value; if(!v) return;
-            let li = document.createElement('li');
-            li.innerHTML = `⭐ ${v} <span style="float:right; cursor:pointer" onclick="this.parentElement.remove()">❌</span>`;
-            li.style.padding = "10px"; li.style.borderBottom = "1px solid #444";
-            document.getElementById('taskList').appendChild(li);
-            document.getElementById('taskInput').value = "";
-        }
-
-        function openClass(cls) { document.getElementById('classHeading').innerText = "CLASS " + cls + " MISSIONS"; showPage('subjects'); }
-        function openNotes(sub) {
-            const banner = document.getElementById('banner'); const content = document.getElementById('noteContent');
-            if(sub === 'science') { banner.style.backgroundImage = "url('https://i.ibb.co/n8P9yYF/senku.jpg')"; content.innerHTML = "<h3>Kingdom of Science</h3><p>Time to rebuild civilization!</p>"; }
-            else if(sub === 'maths') { banner.style.backgroundImage = "url('https://i.ibb.co/pPz8YmN/lelouch.jpg')"; content.innerHTML = "<h3>Zero's Strategy</h3><p>Math is the path to victory.</p>"; }
-            else { banner.style.backgroundImage = "url('https://i.ibb.co/Qn9Xp80/eren.jpg')"; content.innerHTML = "<h3>History Records</h3><p>Keep moving forward.</p>"; }
-            document.getElementById('noteTitle').innerText = sub.toUpperCase(); showPage('notesView');
-        }
+        function openClass(cls) { alert("Opening Class " + cls + " Library..."); }
     </script>
 </body>
 </html>
-
