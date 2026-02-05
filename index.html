@@ -206,3 +206,278 @@
     </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Academy Hub | Final Version</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 1. THEME VARIABLES */
+        :root {
+            --bg: #050505;
+            --card: #111111;
+            --text: #f1f5f9;
+            --accent: #ff0055; /* Eren Red */
+            --sci: #00ffcc; /* Senku Green */
+            --math: #7000ff; /* Lelouch Purple */
+            --border: #334155;
+        }
+
+        [data-theme="light"] {
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --text: #0f172a;
+            --border: #cbd5e1;
+        }
+
+        /* 2. CORE STYLES */
+        body {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: 0.3s;
+            overflow-x: hidden;
+        }
+
+        .page { display: none; padding: 60px 20px; min-height: 100vh; }
+        .active { display: block; animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+        .container { max-width: 1100px; margin: auto; text-align: center; }
+        h1, h2 { font-family: 'Bangers', cursive; letter-spacing: 2px; }
+
+        /* 3. BUTTONS & TOGGLES */
+        .theme-toggle {
+            position: fixed; top: 20px; right: 20px; z-index: 100;
+            background: var(--accent); color: white; border: none;
+            padding: 10px 15px; border-radius: 5px; cursor: pointer;
+            font-family: 'Bangers'; box-shadow: 0 0 10px var(--accent);
+        }
+
+        .btn-action {
+            background: var(--text); color: var(--bg);
+            border: none; padding: 12px 25px; font-family: 'Bangers';
+            font-size: 1.2rem; cursor: pointer; border-radius: 5px; margin: 10px;
+        }
+
+        /* 4. GRID & CARDS */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px; margin-top: 40px;
+        }
+
+        .card {
+            background-size: cover; background-position: center;
+            height: 250px; border-radius: 15px; position: relative;
+            display: flex; align-items: flex-end; overflow: hidden;
+            border: 4px solid var(--border); transition: 0.4s; cursor: pointer;
+        }
+
+        .card:hover { transform: translateY(-10px) rotate(-1deg); border-color: var(--accent); }
+
+        .card-label {
+            background: rgba(0,0,0,0.85); width: 100%; padding: 15px;
+            color: white; font-family: 'Bangers'; font-size: 1.5rem;
+        }
+
+        /* 5. TOOLS STYLING */
+        #timer { font-size: 4rem; color: var(--sci); margin: 20px 0; text-shadow: 0 0 10px var(--sci); }
+        .tool-card { background: var(--card); border: 2px solid var(--border); padding: 30px; border-radius: 15px; }
+        input { padding: 12px; border-radius: 5px; border: 1px solid var(--border); background: var(--bg); color: var(--text); width: 60%; font-family: 'Orbitron'; }
+
+        /* 6. NOTES STYLING */
+        .hero-banner { width: 100%; height: 300px; background-size: cover; background-position: center; border-radius: 15px; margin-bottom: 25px; border: 3px solid var(--accent); }
+        .note-content { background: var(--card); padding: 35px; border-radius: 15px; text-align: left; border: 1px solid var(--border); }
+        .note-content h3 { color: var(--accent); }
+    </style>
+</head>
+<body data-theme="dark">
+
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">DAY MODE</button>
+
+    <div id="home" class="page active">
+        <div class="container">
+            <h1 style="font-size: 4.5rem; color: var(--accent); text-shadow: 0 0 20px rgba(255,0,85,0.6);">ANIME ACADEMY HUB</h1>
+            <p style="font-size: 1.2rem; opacity: 0.8;">"One step at a time, ten billion steps for civilization."</p>
+            
+            <div class="grid">
+                <div class="card" onclick="showPage('tools')" style="background-image: url('https://images8.alphacoders.com/112/1120042.jpg');">
+                    <div class="card-label">🛠️ TECH GEAR (TOOLS)</div>
+                </div>
+                <div class="card" onclick="showPage('study')" style="background-image: url('https://images4.alphacoders.com/132/1329587.png');">
+                    <div class="card-label">📚 SCROLL ROOM (STUDY)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tools" class="page">
+        <div class="container">
+            <button class="btn-action" onclick="showPage('home')">← EXIT MISSION</button>
+            <h1>NEURAL ENHANCEMENT TOOLS</h1>
+            <div class="grid">
+                <div class="tool-card">
+                    <h2>⏱️ FOCUS TIMER</h2>
+                    <div id="timer">25:00</div>
+                    <button class="btn-action" style="background:var(--sci); width:100%;" onclick="startTimer()">ACTIVATE</button>
+                </div>
+                <div class="tool-card">
+                    <h2>📝 MISSION LOG</h2>
+                    <input type="text" id="taskInput" placeholder="Enter target chapter...">
+                    <button class="btn-action" style="background:var(--accent); color:white;" onclick="addTask()">ADD</button>
+                    <ul id="taskList" style="list-style: none; padding: 0; text-align: left; margin-top: 20px;"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="study" class="page">
+        <div class="container">
+            <button class="btn-back btn-action" onclick="showPage('home')">← HOME</button>
+            <h1>SELECT YOUR RANK</h1>
+            <div class="grid">
+                <div class="card" onclick="openClass('8')"><div class="card-label">CLASS 8</div></div>
+                <div class="card" onclick="openClass('9')"><div class="card-label">CLASS 9</div></div>
+                <div class="card" onclick="openClass('10')"><div class="card-label">CLASS 10</div></div>
+                <div class="card" onclick="alert('Class 11 coming soon!')"><div class="card-label">CLASS 11</div></div>
+                <div class="card" onclick="alert('Class 12 coming soon!')"><div class="card-label">CLASS 12</div></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="subjects" class="page">
+        <div class="container">
+            <button class="btn-action" onclick="showPage('study')">← CHANGE RANK</button>
+            <h1 id="classTitle"></h1>
+            <div class="grid">
+                <div class="card" onclick="openNotes('science')" style="background-image: url('https://images7.alphacoders.com/102/1026048.jpg'); border-color: var(--sci);">
+                    <div class="card-label" style="color:var(--sci)">🔬 SCIENCE (SENKU)</div>
+                </div>
+                <div class="card" onclick="openNotes('maths')" style="background-image: url('https://images6.alphacoders.com/456/456072.jpg'); border-color: var(--math);">
+                    <div class="card-label" style="color:var(--math)">📐 MATHS (LELOUCH)</div>
+                </div>
+                <div class="card" onclick="openNotes('sst')" style="background-image: url('https://images2.alphacoders.com/593/593531.jpg'); border-color: var(--accent);">
+                    <div class="card-label" style="color:var(--accent)">🌍 SST (EREN YEAGER)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="notesView" class="page">
+        <div class="container" style="max-width: 900px;">
+            <button class="btn-action" onclick="showPage('subjects')">← BACK TO DOMAINS</button>
+            <button class="btn-action" style="float:right; background: var(--sci);" onclick="window.print()">🖨️ SAVE PDF</button>
+            <div id="heroBanner" class="hero-banner"></div>
+            <h1 id="notesHeader" style="font-size: 3rem;"></h1>
+            <div id="notesContent" class="note-content"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentClass = "";
+
+        // 1. PAGE NAVIGATION
+        function showPage(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        // 2. THEME TOGGLE
+        function toggleTheme() {
+            const b = document.body;
+            const isDark = b.getAttribute('data-theme') === 'dark';
+            b.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            document.getElementById('themeBtn').innerText = isDark ? 'NIGHT MODE' : 'DAY MODE';
+        }
+
+        // 3. CLASS & SUBJECT LOGIC
+        function openClass(cls) {
+            currentClass = cls;
+            document.getElementById('classTitle').innerText = "CLASS " + cls + " MISSION OBJECTIVES";
+            showPage('subjects');
+        }
+
+        function openNotes(subject) {
+            const banner = document.getElementById('heroBanner');
+            const header = document.getElementById('notesHeader');
+            const content = document.getElementById('notesContent');
+
+            if(subject === 'science') {
+                banner.style.backgroundImage = "url('https://images7.alphacoders.com/102/1026048.jpg')";
+                header.innerText = "SENKU'S SCIENCE NOTES - CLASS " + currentClass;
+                header.style.color = "var(--sci)";
+                content.innerHTML = `
+                    <h3>Chapter 1: The Basics of Civilization</h3>
+                    <p>Science is about logic and observation. Whether you are in Class 8 or 10, the "Rules of the Universe" never change.</p>
+                    <ul>
+                        <li><strong>Chemical Reactions:</strong> Rearranging atoms to create something new.</li>
+                        <li><strong>Biology:</strong> The study of life's "engines" (The Cell).</li>
+                    </ul>
+                    [attachment_0](attachment)
+                    <p><em>"This is exhilarating! We will rebuild everything from scratch." — Senku</em></p>
+                `;
+            } else if (subject === 'maths') {
+                banner.style.backgroundImage = "url('https://images6.alphacoders.com/456/456072.jpg')";
+                header.innerText = "LELOUCH'S MATHS STRATEGY - CLASS " + currentClass;
+                header.style.color = "var(--math)";
+                content.innerHTML = `
+                    <h3>Chapter 1: Tactical Algebra</h3>
+                    <p>Maths is the language of strategy. If you can't solve the equation, you can't win the war.</p>
+                    <p><strong>Formula Focus:</strong> $a^2 + b^2 = c^2$ (Pythagoras Theorem). Use this to calculate the trajectory of your next move.</p>
+                    
+                    <p><em>"I am Lelouch Vi Britannia... and I command you to solve for 'x'!"</em></p>
+                `;
+            } else if (subject === 'sst') {
+                banner.style.backgroundImage = "url('https://images2.alphacoders.com/593/593531.jpg')";
+                header.innerText = "EREN'S SST ARCHIVES - CLASS " + currentClass;
+                header.style.color = "var(--accent)";
+                content.innerHTML = `
+                    <h3>Chapter 1: Fighting for Freedom</h3>
+                    <p>Social Science helps us understand the walls built by history and society.</p>
+                    <ul>
+                        <li><strong>Constitution:</strong> The laws that give us freedom from the "Titans" (Tyranny).</li>
+                        <li><strong>Resources:</strong> Classification of land and water as Biotic or Abiotic.</li>
+                    </ul>
+                    <p><em>"Tatakae! If you don't study history, you are doomed to repeat it." — Eren</em></p>
+                `;
+            }
+            showPage('notesView');
+        }
+
+        // 4. TIMER LOGIC
+        let timeLeft = 1500;
+        let running = false;
+        function startTimer() {
+            if(running) return;
+            running = true;
+            setInterval(() => {
+                if(timeLeft > 0) {
+                    timeLeft--;
+                    let m = Math.floor(timeLeft/60);
+                    let s = timeLeft%60;
+                    document.getElementById('timer').innerText = `${m}:${s<10?'0':''}${s}`;
+                }
+            }, 1000);
+        }
+
+        // 5. TASK LOGIC
+        function addTask() {
+            let v = document.getElementById('taskInput').value;
+            if(!v) return;
+            let li = document.createElement('li');
+            li.style.background = "rgba(255,255,255,0.1)";
+            li.style.padding = "10px"; li.style.margin = "5px 0"; li.style.borderRadius = "5px";
+            li.innerHTML = `⚔️ ${v} <span style="float:right; cursor:pointer" onclick="this.parentElement.remove()">DONE</span>`;
+            document.getElementById('taskList').appendChild(li);
+            document.getElementById('taskInput').value = "";
+        }
+    </script>
+</body>
+</html>
